@@ -5,12 +5,18 @@ apt-get -y upgrade
 apt install openjdk-8-jdk -y scala python3-pip -y
 pip3 install --no-cache-dir pyspark
 
+ping -c 5 dlcdn.apache.org 2>> log.txt
+nslookup dlcdn.apache.org 2>> log.txt
+
 #Install hadoop 
 curl -O -L --retry 10 --retry-delay 5 https://dlcdn.apache.org/hadoop/common/hadoop-3.3.6/hadoop-3.3.6.tar.gz 2>> log.txt
 tar -xzvf hadoop-3.3.6.tar.gz
 mkdir /usr/local/hadoop
 mv hadoop-3.3.6/* /usr/local/hadoop
 rm -rf hadoop-3.3.6 hadoop-3.3.6.tar.gz
+
+ping -c 5 archive.apache.org 2>> log.txt
+nslookup archive.apache.org 2>> log.txt
 
 #Install spark 
 curl -O -L --retry 10 --retry-delay 5 https://archive.apache.org/dist/spark/spark-2.0.0/spark-2.0.0-bin-without-hadoop.tgz 2>> log.txt
